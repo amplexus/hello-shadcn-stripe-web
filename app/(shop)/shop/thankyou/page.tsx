@@ -9,20 +9,20 @@ const ThankyouPage = () => {
   const session_id = searchParams.get("session_id")
   const [sessionMetadata, setSessionMetadata] = useState<Metadata | null>(null)
 
-  console.log("SuccessPage: Session ID returned from stripe", session_id)
+  // console.log("SuccessPage: Session ID returned from stripe", session_id)
   useEffect(() => {
     const fetchCompletedOrder = async () => {
       if (!session_id) return
 
-      console.log("Fetching session")
+      // console.log("Fetching session")
       setSessionMetadata(await get(session_id as string))
     }
     fetchCompletedOrder()
   }, [session_id])
 
-  useEffect(() => {
-    console.log("SuccessPage: sessionMetadata", sessionMetadata)
-  }, [sessionMetadata])
+  // useEffect(() => {
+  //   console.log("SuccessPage: sessionMetadata", sessionMetadata)
+  // }, [sessionMetadata])
 
   if (!session_id || !sessionMetadata) return <div>Transaction not found...</div>
 
@@ -35,7 +35,7 @@ const ThankyouPage = () => {
         Thankyou for your order!
       </p>
       <p>Order: {sessionMetadata.orderId}</p>
-      <p>Customer: {sessionMetadata.buyerId}</p>
+      <p>Customer: {sessionMetadata.email}</p>
       <p>Plan: {sessionMetadata.plan}</p>
     </div>
   );

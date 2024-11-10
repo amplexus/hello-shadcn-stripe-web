@@ -42,7 +42,7 @@ const CheckoutForm = ({
       plan,
       priceInCents,
       orderId: "",
-      buyerId: session.data.user?.email || ""
+      email: session.data.user?.email || ""
     };
 
     await create(transaction);

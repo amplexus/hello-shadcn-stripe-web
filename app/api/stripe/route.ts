@@ -26,7 +26,7 @@ export async function POST(req: Request) {
     // const trans: CheckoutTransactionParams = {
     //   plan: "",
     //   priceInCents: 0,
-    //   buyerId: ""
+    //   email: ""
     // }
     //
     // await complete(trans)
@@ -41,6 +41,7 @@ export async function POST(req: Request) {
     //   />
     //   ),
     // })
+    console.log('POST /api/stripe got charge.succeeded', event.type);
   } else if (event.type === "checkout.session.completed") {
     // Here, you would:
     // - update your local order db to indicate the order has been paid
@@ -54,11 +55,12 @@ export async function POST(req: Request) {
     const trans: CheckoutTransactionParams = {
       plan: metadata?.plan || "",
       priceInCents: amount_total ? amount_total : 0,
-      buyerId: metadata?.buyerId || "",
+      email: metadata?.email || "",
       orderId: metadata?.orderId || "",
       stripeSessionId: id,
       createdAt: new Date(),
     }
+    console.log('POST /api/stripe got checkout.session.completed', event.type);
     await complete(trans);
 
     return NextResponse.json({ message: "OK", transaction: trans });
@@ -67,7 +69,7 @@ export async function POST(req: Request) {
     console.log('POST /api/stripe ignoring event', event.type);
   }
 
-  console.log('POST /api/stripe starts');
+  console.log('POST /api/stripe ends');
   return new NextResponse()
 }
 

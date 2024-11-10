@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "email": "email dev --dir ./email",
     "dev-ssl": "(local-ssl-proxy --source 8443 --target 3000) & NODE_TLS_REJECT_UNAUTHORIZED=0 next dev --port 3000 --turbopack",
     "build": "next build",
     "start": "next start",
@@ -31,7 +32,9 @@
     "next-themes": "^0.3.0",
     "react": "19.0.0-rc-69d4b800-20241021",
     "react-dom": "19.0.0-rc-69d4b800-20241021",
+    "react-email": "^3.0.2",
     "recharts": "^2.13.3",
+    "resend": "^4.0.1-alpha.0",
     "stripe": "^17.3.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",

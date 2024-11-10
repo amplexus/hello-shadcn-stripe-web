@@ -37,7 +37,7 @@ export default async function PricingPage(props: { searchParams: SearchParams })
         plan: searchParams.selectedPlan,
         priceInCents,
         orderId: "",
-        buyerId: session.user.email || ""
+        email: session.user.email || ""
       };
       await create(transaction);
     }
