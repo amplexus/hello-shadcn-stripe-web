@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import Stripe from "stripe";
 import { v4 as uuid } from 'uuid';
 import { Resend } from 'resend';
-import { OrderConfirmationEmailTemplate } from '@/email/order-confirmation';
+import OrderConfirmationEmailTemplate from '@/email/order-confirmation';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

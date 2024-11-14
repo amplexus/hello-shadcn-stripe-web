@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 import { CheckIcon } from "lucide-react"
 
-import CheckoutForm from "@/app/(shop)/_components/CheckoutForm"
+import CheckoutForm from "@/app/(shop)/_components/checkout-form"
 
 import { Button } from "@/components/ui/button"
 import {

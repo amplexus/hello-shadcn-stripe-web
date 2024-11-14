@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import NavBar from "@/app/(shop)/_components/NavBar";
+import NavBar from "@/app/(shop)/_components/navbar";
 import NextAuthProvider from "@/providers/session";
 import { ThemeProvider } from "@/providers/theme"
 import "@/app/globals.css";
