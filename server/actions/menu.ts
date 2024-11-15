@@ -1,7 +1,9 @@
 "use server"
 import siteMenu from "@/data/menu"
 
-export async function getMenu(): Promise<typeof siteMenu> {
+export type MenuType = typeof siteMenu[number]
+
+export async function getMenu(): Promise<MenuType[]> {
   return siteMenu
 }
 

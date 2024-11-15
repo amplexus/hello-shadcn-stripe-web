@@ -19,12 +19,12 @@ export async function CollectionLayout({ collection }: { collection: typeof coll
         <h1 className="text-5xl uppercase font-bold my-8 text-center text-gray-800 dark:text-white">{collection.name}</h1>
       )}
       {collection.mainImage && (
-        <div className="w-full h-96 relative mx-auto overflow-clip my-4">
+        <div className="w-full h-64 relative mx-auto overflow-clip my-4">
           <Image className={cn("absolute w-full left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2")} alt={collection.name}
             src={collection.mainImage}
             style={{ objectFit: 'contain' }}
             sizes="800px"
-            width={600} height={600}
+            width={600} height={200}
           />
         </div>
       )}

@@ -1,68 +1,47 @@
 "use client"
 
+import { forwardRef, useEffect, useState } from "react";
+
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useSession, signIn } from "next-auth/react";
-import { SearchIcon, PhoneIcon, Globe2Icon, MenuIcon, LogOutIcon, ChevronRightIcon } from "lucide-react"
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import { usePathname } from "next/navigation";
+
+import { useSession, signIn } from "next-auth/react";
+
+import { SearchIcon, PhoneIcon, Globe2Icon, MenuIcon, LogOutIcon, ChevronRightIcon } from "lucide-react"
 
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetTrigger, SheetContent, SheetDescription, SheetTitle, SheetClose } from "@/components/ui/sheet"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import UserMenu from "@/components/user-menu";
 
-import collections from "@/data/collection-pages"
 import { cn } from "@/lib/utils";
-import { forwardRef, useEffect, useState } from "react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { getMenu } from "@/server/actions/menu"
-
-const menu = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "About",
-    href: "/about",
-  },
-  {
-    name: "Plans",
-    href: "/pricing",
-  },
-  {
-    name: "Shop",
-    href: "/shop",
-    submenu: collections.map((c) => ({ name: c.name, href: c.seoUrl, thumbnail: c.thumbnail, description: c.seoTitle }))
-  },
-]
+import { getMenu, MenuType } from "@/server/actions/menu"
 
 export default function NavBar() {
   const { data: session } = useSession()
   const pathname = usePathname()
-  // const [siteMenu, setSiteMenu] = useState([])
-  //
-  // useEffect(() => {
-  //   const fetchMenu = async () => {
-  //     const m = await getMenu()
-  //     setSiteMenu(m)
-  //   }
-  //   fetchMenu()
-  // }, [])
+  const [menu, setMenu] = useState<MenuType[]>([])
+
+  useEffect(() => {
+    const fetchMenu = async () => {
+      setMenu(await getMenu())
+    }
+    fetchMenu()
+  }, [])
 
   return (
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 z-50">
