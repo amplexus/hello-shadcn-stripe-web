@@ -31,20 +31,31 @@ export default async function AdminLayout({
   children: React.ReactNode;
 }>) {
 
+  const session = await auth();
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans bg-background min-h-screen`}
       >
-        <SkipLink />
-        <aside>
-          <NavBar />
-        </aside>
-        <DynamicBreadcrumbs />
-        <main id="main-content">
-          {children}
-        </main>
-        <Toaster />
+        <NextAuthProvider session={session}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <SkipLink />
+            <aside>
+              <NavBar />
+            </aside>
+            <DynamicBreadcrumbs />
+            <main id="main-content">
+              {children}
+            </main>
+            <Toaster />
+          </ThemeProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );
