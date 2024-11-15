@@ -59,7 +59,7 @@ export async function complete(transaction: CheckoutTransactionParams) {
     from: process.env.SENDER_EMAIL || "sender@example.com",
     to: [transaction.email],
     subject: "We have received your order",
-    react: OrderConfirmationEmailTemplate({ firstName: "John" }) as React.ReactElement,
+    react: OrderConfirmationEmailTemplate() as React.ReactElement,
   });
   console.log("Resend response: ", data, error)
 

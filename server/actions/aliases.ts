@@ -1,3 +1,4 @@
+"use server"
 import aliases from "@/data/urlmaps"
 
 export async function getAlias(slug: string) {
