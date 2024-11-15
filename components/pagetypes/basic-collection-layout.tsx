@@ -2,7 +2,7 @@
 import Image from "next/image"
 import collections from "@/data/collection-pages"
 import { cn } from "@/lib/utils"
-import { ProductCard } from "../_components/product-card"
+import { ProductCard } from "@/components/product-card"
 import { getCollectionProducts } from "@/server/actions/collection"
 
 export async function CollectionLayout({ collection }: { collection: typeof collections[number] | null }) {

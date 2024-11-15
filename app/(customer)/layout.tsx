@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import NavBar from "@/app/(marketing)/_components/NavBar";
+import NavBar from "@/components/navbar";
 import NextAuthProvider from "@/providers/session";
 import { ThemeProvider } from "@/providers/theme"
 import "@/app/globals.css";
 import { auth } from "@/auth";
-import DynamicBreadcrumbs from "@/components/DynamicBreadcrumbs";
-import SkipLink from "@/components/SkipLink";
+import DynamicBreadcrumbs from "@/components/dynamic-breadcrumbs";
+import SkipLink from "@/components/skip-link";
 import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({

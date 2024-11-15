@@ -12,13 +12,19 @@ export default function ProductImageCarousel({ product }: { product: typeof prod
   const [thumbsApi, setThumbsApi] = useState<CarouselApi>()
   const [selectedIndex, setSelectedIndex] = useState(0)
 
+  const onSelect = useCallback(() => {
+    if (!mainApi || !thumbsApi) return
+    setSelectedIndex(mainApi.selectedScrollSnap())
+    thumbsApi.scrollTo(mainApi.selectedScrollSnap())
+  }, [mainApi, thumbsApi, setSelectedIndex])
+
   useEffect(() => {
     if (!mainApi)
       return
     onSelect()
     mainApi.on('select', onSelect)
     mainApi.on('reInit', onSelect)
-  }, [mainApi])
+  }, [mainApi, onSelect])
 
   const onThumbClick = useCallback(
     (index: number) => {
@@ -27,12 +33,6 @@ export default function ProductImageCarousel({ product }: { product: typeof prod
     },
     [mainApi, thumbsApi]
   )
-
-  const onSelect = useCallback(() => {
-    if (!mainApi || !thumbsApi) return
-    setSelectedIndex(mainApi.selectedScrollSnap())
-    thumbsApi.scrollTo(mainApi.selectedScrollSnap())
-  }, [mainApi, thumbsApi, setSelectedIndex])
 
   return (
     <>

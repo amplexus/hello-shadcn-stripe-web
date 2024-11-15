@@ -10,7 +10,7 @@ import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
 import { SUBSCRIPTION_TIERS } from "@/data/plans"
-import { SignInButton } from "@/components/SignInButton";
+import { SignInButton } from "@/components/signin-button";
 
 const CheckoutForm = ({
   plan,

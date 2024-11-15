@@ -3,8 +3,8 @@ import Image from "next/image"
 import products from "@/data/product-pages"
 import { formatCurrency } from "@/lib/currency"
 import Link from "next/link"
-import Rating from "../_components/rating"
-import ProductImageCarousel from "../_components/product-image-carousel"
+import Rating from "@/components/rating"
+import ProductImageCarousel from "@/components/product-image-carousel"
 
 export async function ProductLayout({
   product }: { product: typeof products[number] | null }) {

@@ -4,8 +4,8 @@ import { getCollection } from "@/server/actions/collection";
 import { getProduct } from "@/server/actions/product";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import { ProductLayout } from "../../_pagetypes/basic-product-layout";
-import { CollectionLayout } from "../../_pagetypes/basic-collection-layout";
+import { ProductLayout } from "@/components/pagetypes/basic-product-layout";
+import { CollectionLayout } from "@/components/pagetypes/basic-collection-layout";
 
 type PageProps = {
   params: Promise<{ slug: string[], objectType: string, objectKey: string }>

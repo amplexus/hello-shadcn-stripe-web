@@ -2,7 +2,6 @@
 import { auth } from "@/auth";
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
-import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 
 export default async function ProfilePage() {
   const session = await auth();

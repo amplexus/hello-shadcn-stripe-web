@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { SignInButton } from "@/components/SignInButton"
+import { SignInButton } from "@/components/signin-button"
 import { auth } from "@/auth"
 import { cn } from "@/lib/utils"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"

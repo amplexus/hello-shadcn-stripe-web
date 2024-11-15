@@ -22,15 +22,16 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetTrigger, SheetContent, SheetDescription, SheetTitle, SheetClose } from "@/components/ui/sheet"
 
-import { ThemeToggle } from "@/components/ThemeToggle";
-import UserMenu from "@/components/UserMenu";
+import { ThemeToggle } from "@/components/theme-toggle";
+import UserMenu from "@/components/user-menu";
 
 import collections from "@/data/collection-pages"
 import { cn } from "@/lib/utils";
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { getMenu } from "@/server/actions/menu"
 
-const MAIN_MENU = [
+const menu = [
   {
     name: "Home",
     href: "/",
@@ -53,6 +54,16 @@ const MAIN_MENU = [
 export default function NavBar() {
   const { data: session } = useSession()
   const pathname = usePathname()
+  // const [siteMenu, setSiteMenu] = useState([])
+  //
+  // useEffect(() => {
+  //   const fetchMenu = async () => {
+  //     const m = await getMenu()
+  //     setSiteMenu(m)
+  //   }
+  //   fetchMenu()
+  // }, [])
+
   return (
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 z-50">
 
@@ -74,7 +85,7 @@ export default function NavBar() {
             </SheetDescription>
           </VisuallyHidden.Root>
           <div className="grid gap-4 p-4">
-            {MAIN_MENU.map((item) => {
+            {menu.map((item) => {
               if (item.submenu && item.submenu.length > 0) {
                 return (
                   <Collapsible key={item.name} className="grid">
@@ -122,7 +133,7 @@ export default function NavBar() {
       </Sheet>
 
       {/* Desktop menu */}
-      <NavigationMenu orientation="horizontal" className="hidden flex-col gap-6 text-md font-medium md:flex md:items-center md:gap-3 md:text-sm lg:gap-3">
+      <NavigationMenu orientation="horizontal" className="hidden container flex-col gap-6 text-md font-medium md:flex md:items-center md:gap-3 md:text-sm lg:gap-3">
         <NavigationMenuList>
           <NavigationMenuItem key="home">
             <Link href="/" legacyBehavior passHref>
@@ -132,7 +143,7 @@ export default function NavBar() {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
-          {MAIN_MENU.map((item) => {
+          {menu.map((item) => {
             // const isActive = item.href === pathname
 
             if (item.submenu && item.submenu.length > 0) {

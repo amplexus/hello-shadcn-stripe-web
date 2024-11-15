@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetTrigger, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet"
 import { SearchIcon, Globe2Icon, MenuIcon, LogOutIcon } from "lucide-react"
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { ThemeToggle } from "@/components/theme-toggle";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { usePathname } from "next/navigation";
-import UserMenu from "@/components/UserMenu";
+import UserMenu from "@/components/user-menu";
 
 const MAIN_MENU = [
   {
