@@ -3,7 +3,6 @@ import { getAlias } from "@/server/actions/aliases";
 import { getCollection } from "@/server/actions/collection";
 import { getProduct } from "@/server/actions/product";
 import { Metadata, ResolvingMetadata } from "next";
-import { notFound } from "next/navigation";
 import { ProductLayout } from "@/components/pagetypes/basic-product-layout";
 import { CollectionLayout } from "@/components/pagetypes/basic-collection-layout";
 

@@ -1,5 +1,4 @@
 
-import Image from "next/image"
 import products from "@/data/product-pages"
 import { formatCurrency } from "@/lib/currency"
 import Link from "next/link"

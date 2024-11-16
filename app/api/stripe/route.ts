@@ -1,4 +1,4 @@
-import { CheckoutTransactionParams, complete } from '@/server/actions/transaction';
+import { SubscriptionTransactionParams, completeSubscription } from '@/server/actions/transaction';
 import { NextResponse } from 'next/server'
 
 import Stripe from "stripe"
@@ -52,7 +52,7 @@ export async function POST(req: Request) {
 
     const { id, amount_total, metadata } = event.data.object;
 
-    const trans: CheckoutTransactionParams = {
+    const trans: SubscriptionTransactionParams = {
       plan: metadata?.plan || "",
       priceInCents: amount_total ? amount_total : 0,
       email: metadata?.email || "",
@@ -61,7 +61,7 @@ export async function POST(req: Request) {
       createdAt: new Date(),
     }
     console.log('POST /api/stripe got checkout.session.completed', event.type);
-    await complete(trans);
+    await completeSubscription(trans);
 
     return NextResponse.json({ message: "OK", transaction: trans });
 

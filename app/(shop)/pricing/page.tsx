@@ -16,7 +16,7 @@ import {
 import { cn } from "@/lib/utils"
 import { auth } from "@/auth"
 import { SUBSCRIPTION_TIERS } from "@/data/plans"
-import { create } from "@/server/actions/transaction"
+import { createSubscription } from "@/server/actions/transaction"
 import { loadStripe } from "@stripe/stripe-js"
 
 type SearchParams = Promise<{ selectedPlan: string | undefined }>
@@ -29,17 +29,18 @@ export default async function PricingPage(props: { searchParams: SearchParams })
   // So rather than making them choose a pricing plan again, we continue them on in their checkout journey...
   if (session?.user && searchParams?.selectedPlan) {
 
-    const priceInCents = SUBSCRIPTION_TIERS.find(tier => tier.plan === searchParams.selectedPlan)?.priceInCents
-    if (priceInCents) {
+    const foundPlan = SUBSCRIPTION_TIERS.find(tier => tier.plan === searchParams.selectedPlan)
+    if (foundPlan) {
 
       loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
       const transaction = {
         plan: searchParams.selectedPlan,
-        priceInCents,
+        priceId: foundPlan.priceId,
+        priceInCents: foundPlan.priceInCents,
         orderId: "",
         email: session.user.email || ""
       };
-      await create(transaction);
+      await createSubscription(transaction);
     }
   }
 

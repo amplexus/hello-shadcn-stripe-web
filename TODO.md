@@ -1,11 +1,11 @@
 # TODO
 
-- setup the plans page as stripe subscription
 - implement shopping cart
 - implement checkout page for products
 - implement account page to view existing orders and subscribed plans
-- fix admin dashboard theme preference being reset every time we navigate from non-admin pages
 - google analytics support
+- account functions
+- admin dashboard submenus and related functions
 
 # WONT
 

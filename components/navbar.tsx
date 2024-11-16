@@ -57,10 +57,10 @@ export default function NavBar() {
         <SheetContent side="left" className="md:hidden">
           <VisuallyHidden.Root>
             <SheetTitle>
-              Menu
+              Main Menu
             </SheetTitle>
             <SheetDescription>
-              Menu
+              Main Menu
             </SheetDescription>
           </VisuallyHidden.Root>
           <div className="grid gap-4 p-4">
