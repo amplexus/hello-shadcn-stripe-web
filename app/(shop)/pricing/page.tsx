@@ -35,7 +35,7 @@ export default async function PricingPage(props: { searchParams: SearchParams })
       loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
       const transaction = {
         plan: searchParams.selectedPlan,
-        priceId: foundPlan.priceId,
+        priceId: foundPlan.priceId || "",
         priceInCents: foundPlan.priceInCents,
         orderId: "",
         email: session.user.email || ""

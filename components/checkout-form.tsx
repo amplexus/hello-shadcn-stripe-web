@@ -50,7 +50,7 @@ const CheckoutForm = ({
       plan,
       priceInCents: found.priceInCents,
       orderId: "",
-      priceId: found.priceId,
+      priceId: found.priceId || "",
       email: session.data.user?.email || ""
     };
     console.log("CheckoutForm::onCheckout(): creating transaction", transaction)

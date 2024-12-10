@@ -57,6 +57,7 @@ export async function POST(req: Request) {
       priceInCents: amount_total ? amount_total : 0,
       email: metadata?.email || "",
       orderId: metadata?.orderId || "",
+      priceId: metadata?.priceId || "",
       stripeSessionId: id,
       createdAt: new Date(),
     }
